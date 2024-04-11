@@ -33,3 +33,19 @@ And for the sophisticated DeFi Traders out there, there are functions that help 
 • Events can not be retrieved from within Smart Contracts
 • Event arguments marked as indexed can be searched for
 • Events are cheap
+
+
+## Storage
+
+When we develop smart contracts, we have available different types of storage:
+
+Volatile stack access: Stack
+Volatile memory access: Memory
+Non-volatile: storage
+
+Stack is used implicitly by Solidity for managing small and temporary variables.
+Memory is explicitly declared and used for temporary storage of data within a transaction.
+Storage is for permanent data stored on the blockchain, representing the contract's state.
+
+
+A transaction on the Ethereum blockchain can be anything that modifies the state of the blockchain. This includes transferring Ether, interacting with a smart contract by changing its state, or creating a new smart contract.
