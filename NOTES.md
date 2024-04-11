@@ -26,3 +26,10 @@ Emergency operations, like account freezing, or withdrawal limits per day/month,
 Whitelisting and Account Sharing
 Account Recovery by using m-out-of-n people to reset an owner, or re-authorize a new person.
 And for the sophisticated DeFi Traders out there, there are functions that help save gas costs, bundle transactions and templates to execute transactions to deleverage positions etc...
+
+
+## Events
+• Events are used for return values, data store or trigger
+• Events can not be retrieved from within Smart Contracts
+• Event arguments marked as indexed can be searched for
+• Events are cheap
