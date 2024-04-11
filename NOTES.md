@@ -49,3 +49,31 @@ Storage is for permanent data stored on the blockchain, representing the contrac
 
 
 A transaction on the Ethereum blockchain can be anything that modifies the state of the blockchain. This includes transferring Ether, interacting with a smart contract by changing its state, or creating a new smart contract.
+
+## ERC20
+
+An ERC20 contract is a standard interface for fungible tokens, which are tokens that have the same value and properties as every other token of the same type. This standard allows for the implementation of a standard API for tokens within smart contracts on the Ethereum blockchain. ERC stands for Ethereum Request for Comments, and 20 is the proposal identifier number.
+
+The ERC20 standard specifies a set of functions and events that an Ethereum token contract has to implement to enable interoperability across multiple interfaces and platforms, such as wallets and decentralized exchanges. This standardization ensures that tokens can be exchanged or transferred in a predictable way across the Ethereum ecosystem.
+
+## ERC20 Token Standard Use Cases
+The ERC20 standard is widely used for creating and issuing smart contracts for tokens on the Ethereum blockchain, especially for:
+
+Digital currencies
+Governance tokens
+Utility tokens in decentralized applications (dApps)
+Its adoption as a standard has facilitated the growth of the decentralized finance (DeFi) ecosystem by ensuring that tokens created on different projects can interact seamlessly with each other, such as being exchangeable on decentralized exchanges (DEXes) without the need for a third party.
+
+## Key Functions of the ERC20 Standard
+The ERC20 standard defines several key functions that a compliant contract must include:
+
+- totalSupply: Returns the total token supply.
+- balanceOf(address account): Returns the account balance of another account with address account.
+- transfer(address to, uint256 amount): Transfers amount of tokens to address to, and MUST fire the Transfer event. The function SHOULD throw if the message caller’s account balance does not have enough tokens to spend.
+- approve(address spender, uint256 amount): Allows spender to withdraw from your account multiple times, up to the amount. If this function is called again it overwrites the current allowance with amount.
+- transferFrom(address from, address to, uint256 amount): Transfers amount of tokens from address from to address to, and MUST fire the Transfer event.
+- allowance(address owner, address spender): Returns the amount which spender is still allowed to withdraw from owner.
+
+## Key Events of the ERC20 Standard
+- Transfer(address indexed from, address indexed to, uint256 value): MUST trigger when tokens are transferred, including zero value transfers.
+- Approval(address indexed owner, address indexed spender, uint256 value): MUST trigger on any successful call to approve(address spender, uint256 value).
