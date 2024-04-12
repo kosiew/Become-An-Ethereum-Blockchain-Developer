@@ -52,6 +52,28 @@ A transaction on the Ethereum blockchain can be anything that modifies the state
 
 ## ERC20
 
+• Fungible Tokens
+• Tokens have no Serial number
+• Send/transfer/approve
+• Eventually mint/burn
+• Transfer event
+• Approve Event
+
+## ERC20 Benefits and Drawbacks
+### Pro
+• Extremely easy to use
+• Can represent anything fungible
+    • Loyalty Points
+    • Money
+    • Casino Chips （Poker？）
+• Can give allowance to other people
+
+### Con
+• Accidentally send Tokens to other contracts who cannot send them back
+• Confusion around decimals
+• No standardized mint/burn behavior
+• Cannot react on receiving tokens
+
 An ERC20 contract is a standard interface for fungible tokens, which are tokens that have the same value and properties as every other token of the same type. This standard allows for the implementation of a standard API for tokens within smart contracts on the Ethereum blockchain. ERC stands for Ethereum Request for Comments, and 20 is the proposal identifier number.
 
 The ERC20 standard specifies a set of functions and events that an Ethereum token contract has to implement to enable interoperability across multiple interfaces and platforms, such as wallets and decentralized exchanges. This standardization ensures that tokens can be exchanged or transferred in a predictable way across the Ethereum ecosystem.
@@ -77,3 +99,40 @@ The ERC20 standard defines several key functions that a compliant contract must 
 ## Key Events of the ERC20 Standard
 - Transfer(address indexed from, address indexed to, uint256 value): MUST trigger when tokens are transferred, including zero value transfers.
 - Approval(address indexed owner, address indexed spender, uint256 value): MUST trigger on any successful call to approve(address spender, uint256 value).
+
+
+## ERC777
+• Fungible Tokens
+• Backwards compatible with ERC20
+    • Can be, doesn't have to
+• Receiving Smart Contracts need to implement and expose the ERC777 TokensSender interface
+• Can add hooks to call other smart contracts when tokens are transferred
+• Standard mint/burn events
+
+## ERC777 Benefits vs Drawbacks
+### Pro
+• Backwards compatible to ERC20 Tokens
+• Can prevent accidental transfer to locked in Contracts
+• Has HOOKS
+
+### Con
+• Harder to implement
+• Fallback/Override to send tokens to receiving contract sometimes necessary
+• Not very widely in use （yet）
+
+## ERC721
+• First non-fungible token standard
+• Like ERC20, but every token has an ID
+• Behaves like deploying an ERC20 token with supply 1
+• Send/transfer/approve
+    • Like ERC20, but for each ID separately
+• Transfer events
+• Approve event
+
+## ERC1155
+• Like a marriage of ERC20 and ERC721
+• Can have balance/supply > 1 for each ID
+• No standard implementation
+    • Opensea example: Can create a new Token （ID）， can then mint new Token for an existing ID
+    • OpenZeppelin: Can mint an amount of tokens for a non-existing ID
+• TransferSingle, TransferBatch events
