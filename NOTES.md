@@ -136,3 +136,134 @@ The ERC20 standard defines several key functions that a compliant contract must 
     • Opensea example: Can create a new Token （ID）， can then mint new Token for an existing ID
     • OpenZeppelin: Can mint an amount of tokens for a non-existing ID
 • TransferSingle, TransferBatch events
+
+
+## Truffle
+List of commonly used Truffle commands:
+
+1. truffle init: Initializes a new Truffle project by creating a new directory with all the necessary files and folders for your project. This is usually the first command you run in a new project.
+
+2. truffle compile: Compiles your smart contracts. This process converts your Solidity contracts into a format that the Ethereum Virtual Machine (EVM) can understand. The output is typically a set of JSON artifacts located in the build/contracts directory.
+
+3. truffle migrate: Deploys your smart contracts to the Ethereum network. This is often used in tandem with a migration script located in the migrations directory that dictates how and in what order your contracts are deployed.
+
+4. truffle test: Runs tests on your smart contracts. Truffle supports testing with JavaScript and Solidity and allows you to test your contracts thoroughly to ensure they behave as expected. Tests are located in the test directory.
+
+5. truffle console: Opens an interactive console connected to your chosen Ethereum network. This is useful for direct interaction with your contracts, debugging, or querying contract state.
+
+6. truffle develop: Starts a Truffle development environment, which includes a development blockchain you can use for testing. It also opens an interactive console where you can run Truffle commands directly.
+
+7. truffle networks: Lists all networks to which your contracts have been deployed, including network ids and addresses of deployed contracts. This is useful for keeping track of where your contracts live across different networks.
+
+8. truffle create contract <ContractName>: Generates a new contract file in the contracts directory. Replace <ContractName> with the desired name for your contract.
+
+9. truffle create test <TestName>: Generates a new test file in the test directory. Replace <TestName> with the name of the contract or functionality you are testing.
+
+10. truffle exec <script.js>: Executes a custom script within the Truffle environment. This can be used for complex deployment scripts, batch processing, or any other task that requires interaction with your contracts outside of migrations and tests.
+
+### Truffle Dashboard
+
+1. Start the Truffle Dashboard:
+
+You can start the Truffle Dashboard by running the command truffle dashboard in your terminal. This command launches a local web server that hosts the Dashboard interface.
+
+2. Connect to the Truffle Dashboard from your DApp:
+
+Once the Dashboard is running, you can connect your decentralized application (DApp) or development environment to the Dashboard. This typically involves setting the Dashboard as your network endpoint in your Truffle configuration (truffle-config.js or truffle.js).
+
+3. Deploy Contracts via the Dashboard:
+
+With the Dashboard running and configured, you can deploy contracts using the Dashboard's interface. This involves selecting the appropriate network (such as a testnet like Goerli) and deploying your contracts directly from the Dashboard.
+
+4. Verify Contract Source Code:
+
+After deployment, the Truffle Dashboard may offer functionalities to verify your contract's source code on public testnets or mainnets. Verification involves submitting your contract's source code and metadata to a blockchain explorer service (like Etherscan for Ethereum networks) so that others can view and verify the code running on the blockchain.
+As of my last update, direct source code verification through the Truffle Dashboard might not be as straightforward as using Truffle's truffle run verify command with plugin support (such as truffle-plugin-verify). If the Dashboard doesn't support direct verification, you would typically verify your contract's source code by manually submitting it to the blockchain explorer's verification tool or by using the command line as previously done.
+
+5. Using the Dashboard for Other Tasks:
+
+Beyond deployment and verification, the Truffle Dashboard allows for various interactions with your deployed contracts, network management, and potentially more features that Truffle may add over time to enhance smart contract development and management.
+
+
+## How to deploy a contract using Truffle
+1. Use Truffle to sign Transactions and connect to a blockchain node, either self-hosted or hosted. This way we need to either give Truffle a private key or the seed phrase. And you will need to download and run a node or need to sign up to a service like Infura, Alchemy or Pocket Network - there are many more.
+
+2. Use Truffle Dashboard and connect MetaMask - this is more secure
+
+
+## Ganache
+
+Commonly used options:
+
+Starting Ganache CLI: Simply running ganache-cli in your terminal starts a local Ethereum blockchain instance. By default, it listens on http://127.0.0.1:8545.
+
+Specifying the Port (-p or --port): To start Ganache CLI on a specific port:
+ganache-cli --port <port number>
+Replace <port number> with your desired port number.
+
+ganache-cli --accounts <number>
+Determining Account Balance (-e or --defaultBalanceEther): To set the default balance for accounts:
+
+ganache-cli --defaultBalanceEther <amount>
+Using a Deterministic Account Generation (-d or --deterministic): For reproducible accounts:
+
+ganache-cli --deterministic
+Unlocking Accounts for Testing (--unlock): To unlock specific accounts for testing purposes:
+
+ganache-cli --unlock <address>
+Setting the Gas Price (-g or --gasPrice): To specify the gas price for transactions:
+
+ganache-cli --gasPrice <gasPrice>
+Setting the Gas Limit (-l or --gasLimit): To specify the block gas limit:
+
+ganache-cli --gasLimit <gasLimit>
+Mnemonic for Generating Accounts (-m or --mnemonic): To specify a mnemonic for generating accounts:
+
+ganache-cli --mnemonic "<mnemonic>"
+Network ID (-i or --networkId): To specify the network ID:
+
+ganache-cli --networkId <id>
+Forking from Another Blockchain (--fork): To fork Ganache CLI from another running blockchain (e.g., mainnet):
+
+ganache-cli --fork <URL of the Ethereum client to fork>
+
+## sample truffle-config.js - using truffle dashboard
+
+```
+module.exports = {
+
+  networks: {
+
+    ganache: {
+     host: "127.0.0.1",     // Localhost (default: none)
+     port: 8545,            // Standard Ethereum port (default: none)
+     network_id: "*",       // Any network (default: none)
+    },
+  },
+
+  // Set default mocha options here, use special reporters, etc.
+  mocha: {
+    // timeout: 100000
+  },
+
+  // Configure your compilers
+  compilers: {
+    solc: {
+      version: "0.8.16",      // Fetch exact version from solc-bin (default: truffle's version)
+      // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
+      settings: {          // See the solidity docs for advice about optimization and evmVersion
+       optimizer: {
+         enabled: false,
+         runs: 200
+       },
+      //  evmVersion: "byzantium"
+      }
+    }
+  },
+  plugins: ['truffle-plugin-verify'],
+  api_keys: {
+    etherscan: fs.readFileSync(".etherscan").toString().trim()
+  },
+
+};
+```
