@@ -293,3 +293,10 @@ load new transaction， （T）
 Hardhat can generate Typescript project
 
 install hardhat with npm install --save-dev hardhat
+
+## Foundry
+
+`forge` command
+
+tests do not use `describe` like hardhat, truffle
+
