@@ -267,3 +267,29 @@ module.exports = {
 
 };
 ```
+
+## Truffle Debugger commands
+
+Commands：
+（enter） last conmand entered （step next）
+（o） step over，（i） step line / step into， （u） step out， （n） step next
+（c） continue until breakpoint， （Y） reset & continue to previous error
+（y） （if at end） reset & continue to final error
+（；） step instruction （include number to step multiple）
+（g） turn on generated sources， （G） turn off generated sources except via'；
+（p） print instruction & state （'p ［memlcallsto］*； see docs for more）
+（1） print additional source context （'1 ［+<lines-ahead>］［-<lines-back>］）
+（s） print stacktrace，（h）print this help
+load new transaction， （T）
+（B） remove breakpoint （similar to adding, or B allto remove al1）
+（+） add watch expression （+：<expr>），（-）remove watch expression （-：<expr>）
+（？） list existing watch expressions and breakpoints
+（v） print variables and values（'v［builglolcon|1oc］*）
+（：） evaluate expression - see"v'
+
+
+## Hardhat
+
+Hardhat can generate Typescript project
+
+install hardhat with npm install --save-dev hardhat
