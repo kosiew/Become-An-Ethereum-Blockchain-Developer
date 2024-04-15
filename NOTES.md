@@ -139,6 +139,12 @@ The ERC20 standard defines several key functions that a compliant contract must 
 
 
 ## Truffle
+
+https://consensys.io/blog/consensys-announces-the-sunset-of-truffle-and-ganache-and-new-hardhat?utm_source=github&utm_medium=referral&utm_campaign=2023_Sep_truffle-sunset-2023_announcement_
+
+Truffle and Ganache are sunsetted and will be replaced by Hardhat. The Truffle Suite will be maintained until the end of 2023, and the team will focus on supporting the transition to Hardhat.
+
+
 List of commonly used Truffle commands:
 
 1. truffle init: Initializes a new Truffle project by creating a new directory with all the necessary files and folders for your project. This is usually the first command you run in a new project.
